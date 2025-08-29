@@ -1,0 +1,819 @@
+@import './chat-layout.css';
+
+/* @tailwind directives removed because Tailwind CSS is not configured in the build process */
+
+/* Предотвращение горизонтального скролла */
+html, body {
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@font-face {
+  font-family: 'TT_Autonomous_Trial_Variable';
+  src: url('/fonts/TT_Autonomous_Trial_Variable.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Autonomous';
+  src: url('./assets/fonts/TT_Autonomous/TT_Autonomous_Trial_Variable.ttf') format('truetype');
+  font-weight: 810;
+  font-style: normal;
+}
+
+/* Poppins Font Family - for navigation and buttons */
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Play';
+  src: url('./assets/fonts/Play/Play-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter/Inter-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter/Inter-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter/Inter-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter/Inter-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Autonomous Mono Trl - for cabinet UI */
+@font-face {
+  font-family: 'TT Autonomous Mono Trl';
+  src: url('./assets/fonts/TT_Autonomous/TT_Autonomous_Trial_Variable.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Autonomous Mono Trl';
+  src: url('./assets/fonts/TT_Autonomous/TT_Autonomous_Trial_Variable.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TT Autonomous Trial Variable - for main headings */
+@font-face {
+  font-family: 'TT Autonomous Trial Variable';
+  src: url('./assets/fonts/TT_Autonomous/TT_Autonomous_Trial_Variable.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Autonomous Trial Variable';
+  src: url('./assets/fonts/TT_Autonomous/TT_Autonomous_Trial_Variable.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Autonomous Trial Variable';
+  src: url('./assets/fonts/TT_Autonomous/TT_Autonomous_Trial_Variable.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* JejuGothic - for course module numbers */
+@font-face {
+  font-family: 'JejuGothic';
+  src: local('Jeju Gothic'), local('JejuGothic'), local('Arial');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback for course numbers if JejuGothic is not available */
+@font-face {
+  font-family: 'CourseNumbers';
+  src: local('Monaco'), local('Consolas'), local('monospace');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #121212;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Дополнительные CSS переменные для тёмной темы */
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2a2a2a;
+  --text-primary: rgba(255, 255, 255, 0.87);
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --accent-blue: #60a5fa;
+  --accent-blue-dark: #3b82f6;
+}
+
+a {
+  font-weight: 500;
+  /* Use inherited color to avoid global blue links */
+  color: inherit;
+  text-decoration: inherit;
+}
+/* Remove global link hover color */
+a:hover {
+  color: inherit;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'TT_Autonomous_Trial_Variable', 'Poppins', 'Play';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.authh1 {
+  font-family: 'TT_Autonomous_Trial_Variable';
+}
+
+.authp {
+  font-family: 'Play';
+}
+
+.about-us-title {
+  position: absolute;
+  width: 230px;
+  height: 80px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+  color: #1951F3;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+/* Remove global button hover border color */
+/* Intentionally no hover border color to avoid blue outline */
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Крутые анимации для страницы логин�� */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(66, 133, 244, 0.8), 0 0 30px rgba(66, 133, 244, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+  }
+}
+
+/* Улучшенные анимации для хедера */
+@keyframes headerSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoRotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes navItemFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes mobileMenuSlide {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes underlineGrow {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Классы для анимаций хедера */
+.animate-headerSlideDown {
+  animation: headerSlideDown 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-logoRotateIn {
+  animation: logoRotateIn 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-navItemFloat {
+  animation: navItemFloat 3s ease-in-out infinite;
+}
+
+.animate-logoGlow {
+  animation: logoGlow 2s ease-in-out infinite;
+}
+
+.animate-buttonPulse {
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+.animate-mobileMenuSlide {
+  animation: mobileMenuSlide 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Эффект shimmer для кнопок */
+.shimmer-effect {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Hover эффекты для навигации */
+.nav-item-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item-hover::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav-item-hover:hover::before {
+  transform: scaleX(1);
+}
+
+/* Стили для активного состояния */
+.nav-item-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff, #e0e0e0, #ffffff);
+  animation: underlineGrow 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Улучшенные стили для кнопок */
+.button-text-hover {
+  position: relative;
+  z-index: 20 !important;
+  color: white !important;
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+.button-text-hover:hover {
+  color: #000000 !important;
+  text-shadow: none;
+}
+
+/* Гарантия видимости текста */
+.login-button span {
+  position: relative;
+  z-index: 30 !important;
+  color: white !important;
+  transition: color 0.3s ease !important;
+}
+
+.login-button:hover span {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+/* Альтернативное решение для кнопки входа */
+.login-button {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover span,
+.login-button:hover .button-text-hover {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+.login-button:hover {
+  color: #000000 !important;
+}
+
+/* Дополнительное затемнение для читаемости */
+.login-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 15;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover::before {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Фиксируем проблемы с прокруткой в кабинете */
+.cabinet-container {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.cabinet-main-content {
+  margin-left: 7rem; /* 112px = 28 * 0.25rem */
+  padding: 1rem;
+  min-height: calc(100vh - 2rem);
+  overflow: visible;
+}
+
+/* Предотвращаем прыжки прокрутки */
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Классы анимаций */
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.animate-slideInFromRight {
+  animation: slideInFromRight 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slideInFromBottom {
+  animation: slideInFromBottom 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Зад��ржки анимации */
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+
+/* Дополнительные эффекты при наведении */
+.hover-float:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 20px rgba(66, 133, 244, 0.3);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Анимация для фона страницы */
+@keyframes backgroundFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.background-float {
+  animation: backgroundFloat 6s ease-in-out infinite;
+}
+
+/* Градиентная анимация */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Убираем outline для всех кнопок с focus:outline-none */
+button.focus\:outline-none:focus,
+button.focus\:outline-none:focus-visible,
+.focus\:outline-none:focus,
+.focus\:outline-none:focus-visible {
+  outline: none !important;
+}
+
+/* Custom font utility classes for Cabinet page */
+.font-tt-autonomous {
+  font-family: 'TT Autonomous Trial Variable', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.font-tt-mono {
+  font-family: 'TT Autonomous Mono Trl', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+/* Custom color utilities */
+.text-stroke-white {
+  -webkit-text-stroke: 2px #F5F5F5;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Дополнительные стили для тёмной темы */
+.dark-theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Анимация появления для тёмной темы */
+@keyframes darkFadeIn {
+  from {
+    opacity: 0;
+    background-color: #000000;
+  }
+  to {
+    opacity: 1;
+    background-color: #121212;
+  }
+}
+
+.dark-fade-in {
+  animation: darkFadeIn 0.5s ease-out forwards;
+}
+
+/* Гладкий переход для загрузки */
+@keyframes darkSlideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.dark-slide-up {
+  animation: darkSlideUp 0.6s ease-out forwards;
+}
+
+/* Стили для скроллбара в тёмной теме */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2a2a2a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3a3a3a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  /* Remove global link hover color in light mode */
+  a:hover {
+    color: inherit;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* Cabinet Layout Styles */
+.cabinet-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cabinet-main-content {
+  margin-left: 80px; /* Отступ для сайдбара */
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .cabinet-main-content {
+    margin-left: 0;
+    height: 100vh;
+  }
+}

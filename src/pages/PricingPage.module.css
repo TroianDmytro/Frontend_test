@@ -1,0 +1,547 @@
+/* PricingPage responsive styles */
+
+.pricingPage {
+  background-color: #121212;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Decorative Elements */
+.decorativeElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.geometricLine1 {
+  width: 8.4vw;
+  height: 40.8vh;
+  position: absolute;
+  left: -2.6vw;
+  top: 25vh;
+}
+
+.geometricLine2 {
+  width: 8.7vw;
+  height: 42.6vh;
+  position: absolute;
+  left: -1.5vw;
+  top: 24vh;
+}
+
+.geometricCross {
+  width: 4.2vw;
+  height: 4.2vw;
+  position: absolute;
+  left: 8.5vw;
+  top: 40vh;
+}
+
+.targetDecoration {
+  width: 8.2vw;
+  height: 8.2vw;
+  position: absolute;
+  right: 15vw;
+  top: 14vh;
+}
+
+.innerCircle {
+  width: 3.8vw;
+  height: 3.8vw;
+  position: absolute;
+  left: 2.2vw;
+  top: 2.2vw;
+}
+
+.outerCircle {
+  width: 5.8vw;
+  height: 5.8vw;
+  position: absolute;
+  left: 1.2vw;
+  top: 1.2vw;
+}
+
+.targetLine1 {
+  width: 2.2vw;
+  height: 1px;
+  background: #FFF;
+  position: absolute;
+  left: 4.2vw;
+  top: 0px;
+}
+
+.targetLine2 {
+  width: 2.2vw;
+  height: 1px;
+  background: #FFF;
+  position: absolute;
+  right: 0px;
+  top: 4.2vw;
+}
+
+.targetLine3 {
+  width: 2.2vw;
+  height: 1px;
+  background: #FFF;
+  position: absolute;
+  left: 0px;
+  top: 4.2vw;
+}
+
+.targetLine4 {
+  width: 2.2vw;
+  height: 1px;
+  background: #FFF;
+  position: absolute;
+  left: 4.2vw;
+  bottom: 0px;
+}
+
+.plusIconsContainer {
+  position: absolute;
+  right: 5vw;
+  top: 60vh;
+}
+
+.plusIcon {
+  width: 1.8vw;
+  min-width: 20px;
+  height: 1.8vw;
+  min-height: 20px;
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.plusLine1 {
+  width: 50%;
+  height: 1px;
+  background: #FFF;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+
+.plusLine2 {
+  width: 50%;
+  height: 1px;
+  background: #FFF;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.plusLine3 {
+  width: 50%;
+  height: 1px;
+  background: #FFF;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.plusLine4 {
+  width: 50%;
+  height: 1px;
+  background: #FFF;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.heroSection {
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heroTitle {
+  color: #FFFFFF;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #FFFFFF, #B0B0B0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroDescription {
+  color: #B0B0B0;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
+.pricingSection {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Pricing Card Styles */
+.pricingCard {
+  position: relative;
+  background: #2F2F2F;
+  border-radius: 16px;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #404040;
+}
+
+.pricingCard:nth-child(1) {
+  border: 2px solid #B400F0;
+}
+
+.popularBadge {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #B400F0, #9747FF);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0 0 12px 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  z-index: 10;
+}
+
+.backgroundGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  opacity: 0.1;
+  border-radius: 16px 16px 0 0;
+}
+
+.cardIcon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.cardTitle {
+  color: #FFFFFF;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+.cardDescription {
+  color: #B0B0B0;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+.priceContainer {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.price {
+  color: #FFFFFF;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+}
+
+.originalPrice {
+  color: #888888;
+  font-size: 1.125rem;
+  text-decoration: line-through;
+  font-family: 'Inter', sans-serif;
+}
+
+.currency {
+  color: #B0B0B0;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.featuresContainer {
+  flex: 1;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.featureIcon {
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cardButton {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: none;
+}
+
+.cardButton.popular {
+  background: linear-gradient(135deg, #B400F0, #9747FF);
+}
+
+.cardButton.standard {
+  background: transparent;
+  border: 2px solid #B400F0;
+}
+
+.cardButton:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(180, 0, 240, 0.3);
+}
+
+.cardButton.standard:hover {
+  background: linear-gradient(135deg, #B400F0, #9747FF);
+}
+
+.featuresSection {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, transparent 0%, rgba(47, 47, 47, 0.3) 100%);
+  position: relative;
+  z-index: 2;
+}
+
+.featuresTitle {
+  color: #FFFFFF;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featureCard {
+  padding: 2rem;
+  text-align: center;
+}
+
+.featureIcon {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.featureTitle {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.featureDescription {
+  color: #B0B0B0;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .decorativeElements {
+    display: none;
+  }
+
+  .heroSection {
+    padding: 6rem 1rem 3rem;
+  }
+  
+  .pricingSection {
+    padding: 3rem 1rem;
+  }
+  
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .pricingCard {
+    padding: 1.5rem;
+  }
+  
+  .cardIcon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+  
+  .cardTitle {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .cardDescription {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+  
+  .price {
+    font-size: 1.75rem;
+  }
+  
+  .originalPrice {
+    font-size: 1rem;
+  }
+  
+  .featureItem {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cardButton {
+    padding: 0.875rem;
+    font-size: 0.875rem;
+  }
+  
+  .popularBadge {
+    font-size: 0.75rem;
+    padding: 0.375rem 1rem;
+  }
+  
+  .featuresSection {
+    padding: 4rem 1rem;
+  }
+  
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pricingGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardTitle {
+    font-size: 1.375rem;
+  }
+  
+  .price {
+    font-size: 2.125rem;
+  }
+
+  .geometricLine1,
+  .geometricLine2 {
+    width: 6vw;
+    height: 30vh;
+  }
+
+  .geometricCross {
+    width: 3vw;
+    height: 3vw;
+  }
+
+  .targetDecoration {
+    width: 6vw;
+    height: 6vw;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  .pricingGrid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1400px;
+  }
+
+  .pricingCard {
+    padding: 2.5rem;
+  }
+  
+  .cardIcon {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .pricingGrid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1400px;
+  }
+}

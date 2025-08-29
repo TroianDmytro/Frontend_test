@@ -1,0 +1,44 @@
+/* Основные стили для больших экранов (1200px и больше) */
+.footerHomeContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  max-width: 100%;
+}
+
+/* Планшеты и средние экраны (768px - 1199px) */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+}
+
+/* Маленькие планшеты (576px - 767px) */
+@media screen and (max-width: 767px) and (min-width: 576px) {
+  .footerHomeContainer {
+    margin-top: 1rem;
+  }
+}
+
+/* Мобильные устройства (до 575px) */
+@media screen and (max-width: 575px) {
+  .footerHomeContainer {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Очень маленькие экраны (до 320px) */
+@media screen and (max-width: 320px) {
+  .footerHomeContainer {
+    margin-top: 0.25rem;
+  }
+}

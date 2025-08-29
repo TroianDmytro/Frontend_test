@@ -1,0 +1,77 @@
+/* Chat Layout Specific Styles */
+
+.chat-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.chat-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages-area {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0; /* Important for flexbox scrolling */
+}
+
+.chat-input-area {
+  flex-shrink: 0;
+}
+
+.chat-header {
+  flex-shrink: 0;
+}
+
+/* Prevent body scroll when chat is active */
+.chat-active {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Mobile chat overlay */
+@media (max-width: 768px) {
+  .chat-sidebar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+  }
+  
+  .chat-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+  }
+}
+
+/* Ensure proper scrolling behavior */
+.chat-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.chat-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.chat-scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}

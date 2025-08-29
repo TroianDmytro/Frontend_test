@@ -1,0 +1,85 @@
+/* StartPage responsive styles */
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: #121212;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #EFEFF2;
+  font-family: 'TT Autonomous';
+  font-size: clamp(60px, 8vw, 150px);
+  font-style: normal;
+  font-weight: 810;
+  line-height: 1.2;
+  letter-spacing: clamp(20px, 4vw, 73.5px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.enterButton {
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translateX(-50%);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .title {
+    font-size: clamp(40px, 12vw, 80px);
+    letter-spacing: clamp(10px, 6vw, 30px);
+    top: 45%;
+  }
+
+  .enterButton {
+    top: 70%;
+  }
+
+  /* Hide some decorative elements on mobile for cleaner look */
+  .decorativeElement {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: clamp(30px, 15vw, 60px);
+    letter-spacing: clamp(5px, 8vw, 20px);
+    top: 40%;
+  }
+
+  .enterButton {
+    top: 75%;
+  }
+
+  .decorativeElement {
+    opacity: 0.3;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .title {
+    font-size: clamp(80px, 10vw, 120px);
+    letter-spacing: clamp(30px, 5vw, 50px);
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1920px) {
+  .title {
+    font-size: 150px;
+    letter-spacing: 73.5px;
+  }
+}

@@ -1,0 +1,240 @@
+/* PricingCard responsive styles */
+
+.pricingCard {
+  position: relative;
+  background: #2F2F2F;
+  border-radius: 16px;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pricingCard.popular {
+  border: 2px solid #B400F0;
+}
+
+.pricingCard.standard {
+  border: 1px solid #404040;
+}
+
+.popularBadge {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #B400F0, #9747FF);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0 0 12px 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.backgroundGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  opacity: 0.1;
+  border-radius: 16px 16px 0 0;
+}
+
+.cardIcon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.cardTitle {
+  color: #FFFFFF;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+.cardDescription {
+  color: #B0B0B0;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+.priceContainer {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.price {
+  color: #FFFFFF;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+}
+
+.originalPrice {
+  color: #888888;
+  font-size: 1.125rem;
+  text-decoration: line-through;
+  font-family: 'Inter', sans-serif;
+}
+
+.currency {
+  color: #B0B0B0;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.featuresContainer {
+  flex: 1;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.featureIcon {
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cardButton {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: none;
+}
+
+.cardButton.popular {
+  background: linear-gradient(135deg, #B400F0, #9747FF);
+}
+
+.cardButton.standard {
+  background: transparent;
+  border: 2px solid #B400F0;
+}
+
+.cardButton:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(180, 0, 240, 0.3);
+}
+
+.cardButton.standard:hover {
+  background: linear-gradient(135deg, #B400F0, #9747FF);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .pricingCard {
+    padding: 1.5rem;
+  }
+  
+  .cardIcon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+  
+  .cardTitle {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .cardDescription {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+  
+  .price {
+    font-size: 1.75rem;
+  }
+  
+  .originalPrice {
+    font-size: 1rem;
+  }
+  
+  .featureItem {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cardButton {
+    padding: 0.875rem;
+    font-size: 0.875rem;
+  }
+  
+  .popularBadge {
+    font-size: 0.75rem;
+    padding: 0.375rem 1rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cardTitle {
+    font-size: 1.375rem;
+  }
+  
+  .price {
+    font-size: 2.125rem;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  .pricingCard {
+    padding: 2.5rem;
+  }
+  
+  .cardIcon {
+    width: 70px;
+    height: 70px;
+  }
+}

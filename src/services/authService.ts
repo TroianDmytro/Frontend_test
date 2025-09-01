@@ -15,8 +15,8 @@ import type {
 
 // API Configuration
 export const API_BASE_URL = import.meta.env.PROD
-  ? 'https://neuronest.pp.ua/api/auth'
-  : 'http://localhost:8000/api/auth';
+  ? 'https://neuronest.pp.ua/api'
+  : 'http://localhost:8000/api';
 
 class AuthApiError extends Error {
   constructor(public statusCode: number, message: string, public error: string) {

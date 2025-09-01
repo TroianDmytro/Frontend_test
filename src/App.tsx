@@ -19,8 +19,8 @@ import { LoadingProvider, useLoading } from './components/LoadingContext'
 import { AuthProvider } from './contexts/AuthContext'
 import LoadingOverlay from './components/LoadingOverlay'
 import './App.css'
-import { OwnerPanel } from './components/admin/OwnerPanel'
-import { AdminPanel } from './components/admin/AdminPanel'
+import OwnerPanel from './components/admin/OwnerPanel'
+import AdminPanel from './components/admin/AdminPanel'
 
 function AppContent() {
   const location = useLocation();

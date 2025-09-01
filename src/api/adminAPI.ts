@@ -55,7 +55,7 @@ interface AdminStatistics {
 
 class AdminAPI {
     private getAuthHeaders() {
-        const token = localStorage.getItem('authToken');
+        const token = localStorage.getItem('auth_token');
         if (!token) {
             throw new Error('Токен авторизации не найден');
         }

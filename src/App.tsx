@@ -19,11 +19,13 @@ import { LoadingProvider, useLoading } from './components/LoadingContext'
 import { AuthProvider } from './contexts/AuthContext'
 import LoadingOverlay from './components/LoadingOverlay'
 import './App.css'
+import { OwnerPanel } from './components/admin/OwnerPanel'
+import { AdminPanel } from './components/admin/AdminPanel'
 
 function AppContent() {
   const location = useLocation();
   const { isLoading } = useLoading();
-  
+
   const isStartPage = location.pathname === '/';
   const isGraphicDesignPage = location.pathname === '/courses/graphic-design';
   const isProgrammingPage = location.pathname === '/courses/programming';
@@ -137,49 +139,66 @@ function AppContent() {
               {/* Личный кабинет - все маршруты ведут на CabinetResponsive */}
               <Route path="/cabinet" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
               <Route path="/cabinet/home" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
               <Route path="/cabinet/profile" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
               <Route path="/cabinet/courses" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
               <Route path="/cabinet/calendar" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
               <Route path="/cabinet/books" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
               <Route path="/cabinet/achievements" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
               <Route path="/cabinet/chat" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
               <Route path="/cabinet/wallet" element={
                 <ProtectedRoute>
-                  <CabinetResponsive/>
+                  <CabinetResponsive />
                 </ProtectedRoute>
               } />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute requiredRoles={['admin', 'owner']}>
+                    <AdminPanel />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/owner"
+                element={
+                  <ProtectedRoute requiredRoles={['owner']}>
+                    <OwnerPanel />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </PageTransition>
         </main>

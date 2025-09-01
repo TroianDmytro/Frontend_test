@@ -14,7 +14,7 @@ import type {
 } from '../types/auth';
 
 // API Configuration
-const API_BASE_URL = import.meta.env.PROD
+export const API_BASE_URL = import.meta.env.PROD
   ? 'https://neuronest.pp.ua/api/auth'
   : 'http://localhost:8000/api/auth';
 

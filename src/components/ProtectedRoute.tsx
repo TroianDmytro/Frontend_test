@@ -4,6 +4,7 @@ import { useAuthContext } from '../contexts/AuthContext';
 
 interface ProtectedRouteProps {
   children: ReactNode;
+  requiredRoles?: string[];
   requireAuth?: boolean;
 }
 

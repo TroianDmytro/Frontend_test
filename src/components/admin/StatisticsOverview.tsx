@@ -72,7 +72,7 @@ export const StatisticsOverview: React.FC<StatisticsOverviewProps> = ({ statisti
                             </tr>
                         </thead>
                         <tbody>
-                            {statistics.categories.map((category) => (
+                            {statistics.categories?.map((category) => (
                                 <tr key={category.id} className="border-b border-gray-800 hover:bg-gray-800/50">
                                     <td className="py-3">
                                         <span className="text-white font-medium">{category.name}</span>
@@ -105,7 +105,7 @@ export const StatisticsOverview: React.FC<StatisticsOverviewProps> = ({ statisti
                 <h3 className="text-xl font-bold text-white mb-6">Статистика по уровням сложности</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {statistics.difficulties.map((level) => (
+                    {statistics.difficulties?.map((level) => (
                         <div key={level.id} className="bg-gray-800 rounded-lg p-4">
                             <div className="flex items-center justify-between mb-3">
                                 <h4 className="text-white font-medium">{level.name}</h4>

@@ -64,35 +64,38 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onPayment }) => {
 
         {/* Payment Method Buttons */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-          {paymentMethods.map((method) => (
-            <button
-              key={method.id}
-              onClick={() => handlePayment(method.id)}
-              className="
-                relative h-20 px-6
-                bg-cabinet-blue-dark
-                text-white text-2xl lg:text-3xl font-bold
-                font-inter tracking-wide
-                transition-all duration-200
-                hover:bg-cabinet-blue hover:shadow-lg
-                focus:outline-none focus:ring-2 focus:ring-cabinet-blue
-                group
-              "
-              style={{
-                clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 100%, 0 100%)'
-              }}
-            >
-              <span className="relative z-10">{method.label}</span>
-              
-              {/* Hover effect overlay */}
-              <div className="
-                absolute inset-0 
-                bg-gradient-to-r from-cabinet-blue to-cabinet-accent-blue
-                opacity-0 group-hover:opacity-100
-                transition-opacity duration-200
-              "></div>
-            </button>
-          ))}
+          {paymentMethods.map((method) => {
+            const isActive = selectedMethod === method.id;
+            return (
+              <button
+                key={method.id}
+                onClick={() => handlePayment(method.id)}
+                className={`
+                  relative h-20 px-6
+                  bg-cabinet-blue-dark
+                  text-white text-2xl lg:text-3xl font-bold
+                  font-inter tracking-wide
+                  transition-all duration-200
+                  hover:bg-cabinet-blue hover:shadow-lg
+                  focus:outline-none focus:ring-2 focus:ring-cabinet-blue
+                  group
+                  ${isActive ? 'ring-2 ring-cabinet-accent-blue shadow-lg bg-cabinet-blue' : ''}
+                `}
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 100%, 0 100%)'
+                }}
+              >
+                <span className="relative z-10">{method.label}</span>
+                {/* Hover/Active effect overlay */}
+                <div className={`
+                  absolute inset-0 
+                  bg-gradient-to-r from-cabinet-blue to-cabinet-accent-blue
+                  transition-opacity duration-200
+                  ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
+                `}></div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

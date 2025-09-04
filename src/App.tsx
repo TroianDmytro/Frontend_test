@@ -17,6 +17,7 @@ import PageTransition from './components/PageTransition'
 import ProtectedRoute from './components/ProtectedRoute'
 import { LoadingProvider, useLoading } from './components/LoadingContext'
 import { AuthProvider } from './contexts/AuthContext'
+import { ToastProvider } from './components/ui/ToastProvider'
 import LoadingOverlay from './components/LoadingOverlay'
 import './App.css'
 import OwnerPanel from './components/admin/OwnerPanel'
@@ -211,7 +212,9 @@ function App() {
   return (
     <AuthProvider>
       <LoadingProvider>
-        <AppContent />
+        <ToastProvider>
+          <AppContent />
+        </ToastProvider>
       </LoadingProvider>
     </AuthProvider>
   );

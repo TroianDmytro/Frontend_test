@@ -14,6 +14,12 @@ export interface User {
     authProvider: 'local' | 'google';
     avatar?: string;
     phone?: string;
+    // Extended optional fields (backend alignment)
+    avatarId?: string;
+    age?: number;
+    telefon_number?: string; // raw backend field
+    name?: string;           // raw backend field (duplicate of firstName for compatibility)
+    second_name?: string;    // raw backend field (duplicate of lastName for compatibility)
 }
 
 // ========== КУРСЫ ==========
@@ -55,6 +61,16 @@ export interface AdminStatistics {
         active: number;
         blocked: number;
         newThisMonth: number;
+        byRole?: {
+            users: number;
+            teachers: number;
+            admins: number;
+            owners: number;
+        };
+        byAuthProvider?: {
+            local: number;
+            google: number;
+        };
     };
     courses: {
         total: number;
@@ -68,8 +84,22 @@ export interface AdminStatistics {
         cancelled: number;
         total: number;
     };
-    difficulties: DifficultyLevelStatistics[];
-    categories: CategoryStatistics[];
+    // Aggregated plan statistics (subset used in overview widgets)
+    plans?: {
+        total: number;
+        active: number;
+        subscribers: number;
+    };
+    // Detailed difficulty & category breakdowns (may be absent if endpoint not queried)
+    difficulties?: DifficultyLevelStatistics[];
+    categories?: CategoryStatistics[];
+    // Raw backend payloads kept optionally for secondary analytics widgets (avoid any casting around components)
+    rawData?: {
+        users?: any;
+        difficultyStats?: any;
+        subscriptionStats?: any;
+        planStats?: any;
+    };
 }
 
 export interface OwnerStatistics extends AdminStatistics {

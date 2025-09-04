@@ -2,49 +2,9 @@
 import { API_BASE_URL } from '../services/authService';
 
 // Интерфейсы для типизации
-interface User {
-    id: string;
-    email: string;
-    firstName: string;
-    lastName: string;
-    roles: any[];
-    isBlocked: boolean;
-    isEmailConfirmed: boolean;
-    createdAt: string;
-    lastActivity?: string;
-    authProvider?: 'local' | 'google';
-}
+// Removed unused User interface (analytics methods use dynamic shapes)
 
-interface AdminStatistics {
-    users: {
-        total: number;
-        active: number;
-        blocked: number;
-        newThisMonth: number;
-        byRole: {
-            users: number;
-            teachers: number;
-            admins: number;
-            owners: number;
-        };
-        byAuthProvider: {
-            local: number;
-            google: number;
-        };
-    };
-    courses: {
-        total: number;
-        published: number;
-        draft: number;
-        featured: number;
-    };
-    subscriptions: {
-        active: number;
-        expired: number;
-        cancelled: number;
-        total: number;
-    };
-}
+// Local AdminStatistics interface removed; using canonical type
 
 interface FinancialData {
     totalRevenue: number;
@@ -96,24 +56,10 @@ interface SystemHealth {
     lastBackup: string | null;
 }
 
-// Типы для периодов
-type Period = 'week' | 'month' | 'year';
+// Removed unused Period type alias
 
 // Карта периодов для API
-const periodMap: Record<Period, number> = {
-    week: 7,
-    month: 30,
-    year: 365
-};
-
-// Карта планов
-const planColorMap: Record<string, string> = {
-    'Базовый': '#3B82F6',
-    'Продвинутый': '#8B5CF6',
-    'Премиум': '#F59E0B',
-    'VIP': '#EF4444',
-    'Корпоративный': '#10B981'
-};
+// Removed unused period and plan color maps (placeholders not referenced)
 
 // Исправленный ownerAPI.ts на основе существующих backend endpoints
 

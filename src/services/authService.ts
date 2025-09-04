@@ -85,7 +85,7 @@ class AuthService {
 
   // Authentication
   async login(data: LoginRequest): Promise<LoginResponse> {
-    const response = await fetch(`${API_BASE_URL}/login`, {
+    const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: this.getAuthHeaders(),
       body: JSON.stringify(data)

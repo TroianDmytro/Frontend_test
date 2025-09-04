@@ -1,5 +1,6 @@
 // src/api/client.ts
-import axios, { type AxiosInstance, type AxiosResponse, type AxiosError } from 'axios';
+import axios from 'axios';
+import type { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 
 // Интерфейс для стандартного API ответа
 interface ApiResponse<T = any> {

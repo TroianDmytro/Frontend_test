@@ -1,15 +1,17 @@
 import type { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../contexts/AuthContext';
+import type { Role } from '../auth/roles';
+import { hasAnyRole } from '../auth/roles';
 
 interface ProtectedRouteProps {
   children: ReactNode;
-  requiredRoles?: string[];
+  requiredRoles?: Role[]; // список ролей, любая из которых подходит
   requireAuth?: boolean;
 }
 
-const ProtectedRoute = ({ children, requireAuth = true }: ProtectedRouteProps) => {
-  const { isAuthenticated, isLoading } = useAuthContext();
+const ProtectedRoute = ({ children, requireAuth = true, requiredRoles }: ProtectedRouteProps) => {
+  const { isAuthenticated, isLoading, user } = useAuthContext();
   const location = useLocation();
 
   // Show loading while checking auth status
@@ -24,6 +26,15 @@ const ProtectedRoute = ({ children, requireAuth = true }: ProtectedRouteProps) =
   // If route requires auth but user is not authenticated
   if (requireAuth && !isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  // Role-based access check
+  if (requiredRoles && requiredRoles.length > 0) {
+    const userRoles = user?.roles || [];
+    if (!hasAnyRole(userRoles, requiredRoles)) {
+      // Нет доступа — перенаправляем в кабинет или главную
+      return <Navigate to="/cabinet" replace />;
+    }
   }
 
   // If route doesn't require auth but user is authenticated (like login page)

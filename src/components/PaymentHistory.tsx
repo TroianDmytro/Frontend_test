@@ -62,18 +62,7 @@ const PaymentHistory: React.FC<PaymentHistoryProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'completed':
-        return 'text-green-400';
-      case 'pending':
-        return 'text-yellow-400';
-      case 'failed':
-        return 'text-red-400';
-      default:
-        return 'text-cabinet-gray';
-    }
-  };
+  // Status color helper removed (unused)
 
   return (
     <div className="w-full max-w-6xl mx-auto">

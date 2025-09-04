@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import { Crown, DollarSign, Users, TrendingUp, Settings, Activity, RefreshCw, Database, CheckCircle, AlertTriangle, BarChart3, UserPlus, Shield } from 'lucide-react';
 import { ownerAPI } from '../../api/ownerAPI';
 import { adminAPI } from '../../api/adminAPI';
+import type { AdminStatistics } from '../../types/admin.types';
+import { useToast } from '../ui/ToastProvider';
+import { extractErrorMessage } from '../../utils/errorFormat';
 
 // Интерфейсы для типизации
 interface User {
@@ -18,36 +21,7 @@ interface User {
     authProvider?: 'local' | 'google';
 }
 
-interface AdminStatistics {
-    users: {
-        total: number;
-        active: number;
-        blocked: number;
-        newThisMonth: number;
-        byRole: {
-            users: number;
-            teachers: number;
-            admins: number;
-            owners: number;
-        };
-        byAuthProvider: {
-            local: number;
-            google: number;
-        };
-    };
-    courses: {
-        total: number;
-        published: number;
-        draft: number;
-        featured: number;
-    };
-    subscriptions: {
-        active: number;
-        expired: number;
-        cancelled: number;
-        total: number;
-    };
-}
+// Removed local AdminStatistics interface in favor of canonical type
 
 interface FinancialData {
     totalRevenue: number;
@@ -106,6 +80,7 @@ interface SystemHealth {
 
 const OwnerPanel = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
+    const { push } = useToast();
     const [statistics, setStatistics] = useState<AdminStatistics | null>(null);
     const [financialData, setFinancialData] = useState<FinancialData | null>(null);
     const [users, setUsers] = useState<User[]>([]);
@@ -161,9 +136,10 @@ const OwnerPanel = () => {
             setRevenueAnalytics(revenueData);
             setUserGrowthData(userGrowth);
             setSystemHealth(healthData);
-        } catch (error: any) {
-            console.error('❌ Error loading owner data:', error);
-            setError('Ошибка загрузки данных: ' + (error?.message || 'Неизвестная ошибка'));
+        } catch (e: any) {
+            const msg = extractErrorMessage(e);
+            console.error('❌ Error loading owner data:', e);
+            setError('Ошибка загрузки данных: ' + msg);
         } finally {
             setLoading(false);
         }
@@ -184,9 +160,10 @@ const OwnerPanel = () => {
             await loadData();
             setShowRoleModal(false);
             setSelectedUser(null);
-        } catch (error: any) {
-            console.error('❌ Error assigning role:', error);
-            setError('Ошибка при назначении роли: ' + (error?.message || 'Неизвестная ошибка'));
+        } catch (e: any) {
+            const msg = extractErrorMessage(e);
+            console.error('❌ Error assigning role:', e);
+            setError('Ошибка при назначении роли: ' + msg);
         }
     };
 
@@ -194,9 +171,10 @@ const OwnerPanel = () => {
         try {
             await ownerAPI.removeRole(userId, roleId);
             await loadData();
-        } catch (error: any) {
-            console.error('❌ Error removing role:', error);
-            setError('Ошибка при удалении роли: ' + (error?.message || 'Неизвестная ошибка'));
+        } catch (e: any) {
+            const msg = extractErrorMessage(e);
+            console.error('❌ Error removing role:', e);
+            setError('Ошибка при удалении роли: ' + msg);
         }
     };
 
@@ -260,7 +238,7 @@ const OwnerPanel = () => {
 
                 {/* Ошибка */}
                 {error && (
-                    <div className="bg-red-900 border border-red-600 text-red-200 px-4 py-3 rounded-lg mb-6">
+                    <div className="bg-red-900 border border-red-600 text-red-200 px-4 py-3 rounded-lg mb-6 whitespace-pre-line">
                         {error}
                     </div>
                 )}
@@ -695,10 +673,12 @@ const OwnerPanel = () => {
                                 onClick={async () => {
                                     try {
                                         await adminAPI.updateAllDifficultyStatistics();
-                                        alert('Статистика сложности обновлена');
+                                        push({ type: 'success', message: 'Статистика сложности обновлена' });
                                         await loadData();
-                                    } catch (error: any) {
-                                        setError('Ошибка обновления статистики: ' + (error?.message || 'Неизвестная ошибка'));
+                                    } catch (e: any) {
+                                        const msg = extractErrorMessage(e);
+                                        setError('Ошибка обновления статистики: ' + msg);
+                                        push({ type: 'error', message: msg || 'Ошибка обновления статистики' });
                                     }
                                 }}
                                 disabled={refreshing}
@@ -713,9 +693,11 @@ const OwnerPanel = () => {
                                 onClick={async () => {
                                     try {
                                         const result = await adminAPI.checkExpiringSubscriptions();
-                                        alert(`Проверено подписок. Истекших: ${result?.expiredCount || 0}, уведомлений: ${result?.notifiedCount || 0}`);
-                                    } catch (error: any) {
-                                        setError('Ошибка проверки подписок: ' + (error?.message || 'Неизвестная ошибка'));
+                                        push({ type: 'info', message: `Проверено подписок. Истекших: ${result?.expiredCount || 0}, уведомлений: ${result?.notifiedCount || 0}` });
+                                    } catch (e: any) {
+                                        const msg = extractErrorMessage(e);
+                                        setError('Ошибка проверки подписок: ' + msg);
+                                        push({ type: 'error', message: msg || 'Ошибка проверки подписок' });
                                     }
                                 }}
                                 disabled={refreshing}
@@ -730,10 +712,12 @@ const OwnerPanel = () => {
                                 onClick={async () => {
                                     try {
                                         await adminAPI.updateAllCategoriesStatistics();
-                                        alert('Статистика категорий обновлена');
+                                        push({ type: 'success', message: 'Статистика категорий обновлена' });
                                         await loadData();
-                                    } catch (error: any) {
-                                        setError('Ошибка обновления категорий: ' + (error?.message || 'Неизвестная ошибка'));
+                                    } catch (e: any) {
+                                        const msg = extractErrorMessage(e);
+                                        setError('Ошибка обновления категорий: ' + msg);
+                                        push({ type: 'error', message: msg || 'Ошибка обновления категорий' });
                                     }
                                 }}
                                 disabled={refreshing}
